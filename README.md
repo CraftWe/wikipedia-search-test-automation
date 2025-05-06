@@ -69,7 +69,7 @@ The project demonstrates a basic test case for verifying search functionality on
     ```
 
 3.  **Set ChromeDriver Path:**
-    * In `WikipediaSearchTest.java`, the line `System.setProperty("webdriver.chrome.driver", "C:\\Users\\thein\\OneDrive\\Desktop\\QA\\SQA109 Software Test Automation Level 1 - 0124\\Selenium Projects\\chromedriver-win64\\chromedriver.exe");` sets the path to the ChromeDriver.  **You must change this path** to the location of your ChromeDriver executable.
+    * In `WikipediaSearchTest.java`, the line `System.setProperty("webdriver.chrome.driver", "[Local URL to Web Driver]");` sets the path to the ChromeDriver.  **You must change this path** to the location of your ChromeDriver executable.
 
 4.  **Compile and Run the Test:**
     * Open a terminal or command prompt.
@@ -84,21 +84,21 @@ The project demonstrates a basic test case for verifying search functionality on
 ###   `WikipediaHomePage.java`
 
 * **`private WebDriver driver;`**:  Stores the WebDriver instance.
-* **`public WikipediaHomePage(WebDriver driver)`**:  Constructor that initializes the `driver`.
-* **`public WebElement getSearchBox()`**:  Returns the search input element using `By.id("searchInput")`.
-* **`public WebElement getSearchButton()`**:  Returns the search button element using `By.xpath("//button[@type='submit']")`.
+* `public WikipediaHomePage(WebDriver driver)`:  Constructor that initializes the `driver`.
+* `public WebElement getSearchBox()`:  Returns the search input element using `By.id("searchInput")`.
+* `public WebElement getSearchButton()`:  Returns the search button element using `By.xpath("//button[@type='submit']")`.
 
 ###   `WikipediaSearchTest.java`
 
-* **`System.setProperty("webdriver.chrome.driver", "C:\\Users\\thein\\OneDrive\\Desktop\\QA\\SQA109 Software Test Automation Level 1 - 0124\\Selenium Projects\\chromedriver-win64\\chromedriver.exe");`**:  Configures the system property to specify the location of the ChromeDriver executable.  **Important:** This path needs to be updated to match your local ChromeDriver path.
-* **`WebDriver driver = new ChromeDriver();`**:  Initializes a new ChromeDriver instance.
-* **`driver.get("https://www.wikipedia.org/");`**:  Opens the Wikipedia homepage.
-* **`WikipediaHomePage homePage = new WikipediaHomePage(driver);`**:  Creates an instance of the `WikipediaHomePage` Page Object.
-* **`WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));`**:  Creates a `WebDriverWait` instance with a timeout of 10 seconds.
-* **`wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("searchInput")));`**:  Waits until the search bar is visible.
-* **`homePage.getSearchBox().sendKeys("Selenium");`**:  Enters "Selenium" into the search bar using the Page Object.
-* **`wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));`**: Waits until the search button is clickable.
-* **`homePage.getSearchButton().click();`**:  Clicks the search button using the Page Object.
-* **`String title = driver.getTitle();`**:  Gets the title of the page.
-* **`title.contains("Selenium")`**:  Checks if the title contains "Selenium".
-* **`driver.quit();`**: Closes the browser and terminates the WebDriver session in the `finally` block.
+* `System.setProperty("webdriver.chrome.driver", "[Local URL to Web Driver]");`:  Configures the system property to specify the location of the ChromeDriver executable.  **Important:** This path needs to be updated to match your local ChromeDriver path.
+* `WebDriver driver = new ChromeDriver();`:  Initializes a new ChromeDriver instance.
+* `driver.get("https://www.wikipedia.org/");`:  Opens the Wikipedia homepage.
+* `WikipediaHomePage homePage = new WikipediaHomePage(driver);`:  Creates an instance of the `WikipediaHomePage` Page Object.
+* `WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));`:  Creates a `WebDriverWait` instance with a timeout of 10 seconds.
+* `wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("searchInput")));`:  Waits until the search bar is visible.
+* `homePage.getSearchBox().sendKeys("Selenium");`:  Enters "Selenium" into the search bar using the Page Object.
+* `wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));`: Waits until the search button is clickable.
+* `homePage.getSearchButton().click();`:  Clicks the search button using the Page Object.
+* `String title = driver.getTitle();`:  Gets the title of the page.
+* `title.contains("Selenium")`:  Checks if the title contains "Selenium".
+* `driver.quit();`: Closes the browser and terminates the WebDriver session in the `finally` block.
